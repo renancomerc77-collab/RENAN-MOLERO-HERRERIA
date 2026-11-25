@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio · Renan Molero Herreria</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --texto: #1c2430;
+    --suave: #5b6675;
+    --linha: #e2e6ec;
+    --destaque: #1d4ed8;
+    --falta-bg: #fff3bf;
+    --falta-tx: #7a5b00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f141b;
+      --card: #171e28;
+      --texto: #e8ecf2;
+      --suave: #9aa6b6;
+      --linha: #2a3442;
+      --destaque: #7aa2ff;
+      --falta-bg: #4a3b00;
+      --falta-tx: #ffe08a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  .container { max-width: 820px; margin: 0 auto; padding: 0 20px; }
+  header { padding: 56px 0 32px; border-bottom: 1px solid var(--linha); }
+  header h1 { margin: 0 0 6px; font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.2; }
+  header p { margin: 0; color: var(--suave); font-size: 1.1rem; }
+  .sobre { margin-top: 16px; }
+  main { padding: 32px 0 8px; }
+  .projeto-titulo { margin: 0 0 4px; font-size: 1.6rem; }
+  .projeto-sub { margin: 0 0 24px; color: var(--suave); }
+  section.bloco {
+    background: var(--card);
+    border: 1px solid var(--linha);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+  }
+  section.bloco h2 {
+    margin: 0 0 10px;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--destaque);
+  }
+  section.bloco p { margin: 0 0 10px; }
+  section.bloco p:last-child, section.bloco ul:last-child { margin-bottom: 0; }
+  ul { padding-left: 20px; margin: 0 0 10px; }
+  li { margin-bottom: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; list-style: none; margin: 12px 0 0; }
+  .tags li {
+    margin: 0;
+    padding: 3px 12px;
+    border: 1px solid var(--linha);
+    border-radius: 999px;
+    font-size: .9rem;
+    color: var(--suave);
+  }
+  footer { margin-top: 24px; padding: 28px 0 48px; border-top: 1px solid var(--linha); }
+  footer h2 { margin: 0 0 8px; font-size: 1.1rem; }
+  footer ul { list-style: none; padding: 0; margin: 0; }
+  footer li { margin-bottom: 4px; }
+  a { color: var(--destaque); }
+  .falta { background: var(--falta-bg); color: var(--falta-tx); padding: 0 4px; border-radius: 4px; }
+  code { font-size: .9em; }
+  @media (max-width: 480px) {
+    header { padding-top: 40px; }
+    section.bloco { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Renan Molero Herreria</h1>
+    <p>AMS-DS · Fatec de Araçatuba</p>
+    <p class="sobre">Trabalhar e praticar esportes.</p>
+  </div>
+</header>
+
+<main class="container">
+  <h2 class="projeto-titulo">MOTTA — Peças e Serviços para Caminhões</h2>
+  <p class="projeto-sub">Sistema web com API própria para gerenciar clientes, veículos, peças, serviços e ordens de serviço. Projeto da disciplina de Programação Web e Mobile.</p>
+
+  <section class="bloco">
+    <h2>Problema</h2>
+    <p>Uma loja de peças e serviços para caminhões lida com muita informação ao mesmo tempo: quem são os clientes, quais veículos eles têm, quais peças existem em estoque, quais serviços são oferecidos e quais ordens de serviço estão abertas. Sem um sistema único, esses dados ficam espalhados e difíceis de acompanhar.</p>
+    <p><span class="falta">[Confirme ou ajuste este texto: para quem era o sistema e por que isso importava no trabalho da disciplina.]</span></p>
+  </section>
+
+  <section class="bloco">
+    <h2>O que eu fiz</h2>
+    <p>Desenvolvi um sistema web com tela de login e cadastro de usuários, e telas para cadastrar, consultar, editar e excluir clientes, veículos, serviços, peças e ordens de serviço. A tela inicial mostra quantos registros existem em cada cadastro. Os dados são guardados em um banco de dados, por meio de uma API que eu mesmo construí.</p>
+  </section>
+
+  <section class="bloco">
+    <h2>Como eu fiz</h2>
+    <p>O projeto tem duas partes que se comunicam por uma API REST:</p>
+    <ul>
+      <li><strong>Front-end:</strong> React 19 com Vite. Um componente de CRUD reaproveitado em todas as telas, selects que buscam clientes e veículos para montar as ordens de serviço, e sessão do usuário mantida no navegador.</li>
+      <li><strong>Back-end:</strong> Node.js com Express 5 e TypeScript, com rotas GET, POST, PUT e DELETE para cada cadastro. Validação dos dados recebidos com Zod, tratamento de erros em um middleware e senhas armazenadas com hash (bcryptjs).</li>
+      <li><strong>Banco de dados:</strong> MySQL, acessado pelo Prisma ORM, com relacionamentos entre clientes, veículos e ordens de serviço.</li>
+      <li><strong>Testes:</strong> as rotas da API foram testadas no Insomnia.</li>
+    </ul>
+    <ul class="tags">
+      <li>React</li>
+      <li>Vite</li>
+      <li>Node.js</li>
+      <li>Express</li>
+      <li>TypeScript</li>
+      <li>Prisma</li>
+      <li>MySQL</li>
+      <li>Zod</li>
+      <li>REST</li>
+    </ul>
+  </section>
+
+  <section class="bloco">
+    <h2>Resultado</h2>
+    <ul>
+      <li>5 cadastros com CRUD completo: clientes, veículos, serviços, peças e ordens de serviço.</li>
+      <li>Login e criação de conta funcionando, com bloqueio de usuários inativos e senhas protegidas por hash.</li>
+      <li>Ordens de serviço ligadas a um cliente e a um veículo cadastrados.</li>
+      <li>Painel inicial com a contagem de registros de cada cadastro.</li>
+    </ul>
+    <p><span class="falta">[Acrescente outros resultados reais, se tiver: nota, feedback do professor, link do repositório do projeto etc. Apague esta linha se não houver.]</span></p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <h2>Contato</h2>
+    <ul>
+      <li>LinkedIn: <span class="falta">[link do seu LinkedIn, ou apague esta linha]</span></li>
+      <li>E-mail: <span class="falta">[seu e-mail profissional, ou apague esta linha]</span></li>
+      <li>GitHub: <a href="https://github.com/SEU-USUARIO">https://github.com/<span class="falta">SEU-USUARIO</span></a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
